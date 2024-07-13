@@ -27,7 +27,7 @@
   <superproject name="platform/superproject" remote="aosp" revision="android-14.0.0_r35" />
   <contactinfo bugurl="go/repo-bug" />
 
-  <project path="build/make" name="platform/build" groups="pdk,sysui-studio" remote="aosp">
+  <project path="build/make" name="EunoiaOS/android_build" groups="pdk,sysui-studio">
     <linkfile dest="build/CleanSpec.mk" src="CleanSpec.mk" />
     <linkfile dest="build/buildspec.mk.default" src="buildspec.mk.default" />
     <linkfile dest="build/core" src="core" />
@@ -44,30 +44,20 @@
   <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" remote="aosp" />
   <project path="build/pesto" name="platform/build/pesto" groups="pdk" remote="aosp" />
   <project path="build/release" name="platform/build/release" groups="pdk,tradefed" remote="aosp" />
-  <project path="build/soong" name="platform/build/soong" groups="pdk,tradefed" remote="aosp">
+  <project path="build/soong" name="EunoiaOS/android_build_soong" groups="pdk,tradefed">
     <linkfile dest="Android.bp" src="root.bp" />
     <linkfile dest="bootstrap.bash" src="bootstrap.bash" />
   </project>
   <project path="art" name="platform/art" groups="pdk" remote="aosp" />
-  <project path="bionic" name="platform/bionic" groups="pdk" remote="aosp" />
-  <project path="bootable/recovery" name="platform/bootable/recovery" groups="pdk" remote="aosp" />
+  <project path="bionic" name="EunoiaOS/android_bionic" groups="pdk" />
+  <project path="bootable/recovery" name="EunoiaOS/android_bootable_recovery" groups="pdk" />
   <project path="bootable/libbootloader" name="platform/bootable/libbootloader" groups="vts,pdk" remote="aosp" />
   <project path="cts" name="platform/cts" groups="cts,pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="dalvik" name="platform/dalvik" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="developers/build" name="platform/developers/build" groups="developers,pdk" remote="aosp" />
   <project path="developers/demos" name="platform/developers/demos" groups="developers" remote="aosp" />
   <project path="developers/samples/android" name="platform/developers/samples/android" groups="developers" remote="aosp" />
-  <project path="development" name="platform/development" groups="developers,pdk-cw-fs,pdk-fs" remote="aosp" />
-  <!--
-        goog-and-upload-partner : During repo upload: sync from internal but upload to partner
-         :
-                Replication mirror to allow partner CLs submitted on partner gerrit to be replicated to internal main.
-                Also where to sync from.
-        dest-branch="partner-master-tv-dev" : where in partner it should upload to
-        clone-depth="2" : Don"t clog up git with lots of binaries but allow to revert single kernel revision to help diagnose issues.
-   -->
-  <project path="device/amlogic/yukawa" name="device/amlogic/yukawa" groups="device,yukawa,pdk" remote="aosp" />
-  <project path="device/amlogic/yukawa-kernel" name="device/amlogic/yukawa-kernel" groups="device,yukawa,pdk" clone-depth="1" remote="aosp" />
+  <project path="development" name="EunoiaOS/android_development" groups="developers,pdk-cw-fs,pdk-fs" remote="gitea" />
   <project path="device/common" name="device/common" groups="pdk-cw-fs,pdk" remote="aosp" />
   <project path="device/generic/arm64" name="device/generic/arm64" groups="pdk" remote="aosp" />
   <project path="device/generic/armv7-a-neon" name="device/generic/armv7-a-neon" groups="pdk" remote="aosp" />
@@ -80,68 +70,18 @@
   <project path="device/generic/mini-emulator-armv7-a-neon" name="device/generic/mini-emulator-armv7-a-neon" groups="pdk" remote="aosp" />
   <project path="device/generic/mini-emulator-x86" name="device/generic/mini-emulator-x86" groups="pdk" remote="aosp" />
   <project path="device/generic/mini-emulator-x86_64" name="device/generic/mini-emulator-x86_64" groups="pdk" remote="aosp" />
-  <project path="device/generic/opengl-transport" name="device/generic/opengl-transport" groups="pdk" remote="aosp" />
   <project path="device/generic/trusty" name="device/generic/trusty" groups="pdk" remote="aosp" />
   <project path="device/generic/uml" name="device/generic/uml" groups="device,pdk" remote="aosp" />
   <project path="device/generic/x86" name="device/generic/x86" groups="pdk" remote="aosp" />
   <project path="device/generic/x86_64" name="device/generic/x86_64" groups="pdk" remote="aosp" />
   <project path="device/generic/vulkan-cereal" name="device/generic/vulkan-cereal" groups="pdk" remote="aosp" />
   <project path="device/google/atv" name="device/google/atv" groups="device,broadcom_pdk,generic_fs,pdk" remote="aosp" />
-  <project path="device/google/barbet" name="device/google/barbet" groups="device,barbet" remote="aosp" />
-  <project path="device/google/barbet-sepolicy" name="device/google/barbet-sepolicy" groups="device,barbet" remote="aosp" />
-  <project path="device/google/bluejay" name="device/google/bluejay" groups="device,bluejay" remote="aosp" />
-  <project path="device/google/bluejay-sepolicy" name="device/google/bluejay-sepolicy" groups="device,bluejay" remote="aosp" />
-  <project path="device/google/bluejay-kernel" name="device/google/bluejay-kernel" groups="device,bluejay" clone-depth="1" remote="aosp" />
-  <project path="device/google/bramble" name="device/google/bramble" groups="device,bramble" remote="aosp" />
-  <project path="device/google/bramble-sepolicy" name="device/google/bramble-sepolicy" groups="device,bramble" remote="aosp" />
   <project path="device/google/contexthub" name="device/google/contexthub" groups="device,pdk" remote="aosp" />
-  <project path="device/google/coral" name="device/google/coral" groups="device,coral,generic_fs" remote="aosp" />
-  <project path="device/google/coral-kernel" name="device/google/coral-kernel" groups="device,coral,generic_fs" clone-depth="1" remote="aosp" />
-  <project path="device/google/coral-sepolicy" name="device/google/coral-sepolicy" groups="device,coral,generic_fs" remote="aosp" />
-  <project path="device/google/felix" name="device/google/felix" groups="device,felix" remote="aosp" />
-  <project path="device/google/felix-sepolicy" name="device/google/felix-sepolicy" groups="device,felix" remote="aosp" />
-  <project path="device/google/felix-kernel" name="device/google/felix-kernel" groups="device,felix" clone-depth="1" remote="aosp" />
-  <project path="device/google/gs101" name="device/google/gs101" groups="device,slider,bluejay,blueport,pdk-gs-arm" remote="aosp" />
-  <project path="device/google/gs101-sepolicy" name="device/google/gs101-sepolicy" groups="device,slider,bluejay,blueport,pdk-gs-arm" remote="aosp" />
-  <project path="device/google/gs201" name="device/google/gs201" groups="device,cloudripper" remote="aosp" />
-  <project path="device/google/gs201-sepolicy" name="device/google/gs201-sepolicy" groups="device,cloudripper" remote="aosp" />
-  <project path="device/google/gs-common" name="device/google/gs-common" groups="device,slider,bluejay,blueport,cloudripper,pdk-gs-arm,pdk-cw-tvc" remote="aosp" />
-  <project path="device/google/lynx" name="device/google/lynx" groups="device,lynx" remote="aosp" />
-  <project path="device/google/lynx-sepolicy" name="device/google/lynx-sepolicy" groups="device,lynx" remote="aosp" />
-  <project path="device/google/lynx-kernel" name="device/google/lynx-kernel" groups="device,lynx" clone-depth="1" remote="aosp" />
-  <project path="device/google/pantah" name="device/google/pantah" groups="device,cloudripper" remote="aosp" />
-  <project path="device/google/pantah-sepolicy" name="device/google/pantah-sepolicy" groups="device,cloudripper" remote="aosp" />
-  <project path="device/google/pantah-kernel" name="device/google/pantah-kernel" groups="device,cloudripper" clone-depth="1" remote="aosp" />
-  <project path="device/google/raviole" name="device/google/raviole" groups="device,slider,pdk-gs-arm" remote="aosp" />
-  <project path="device/google/raviole-kernel" name="device/google/raviole-kernel" groups="device,slider,pdk-gs-arm" clone-depth="1" remote="aosp" />
-  <project path="device/google/redbull" name="device/google/redbull" groups="device,redbull" remote="aosp" />
-  <project path="device/google/redbull-kernel" name="device/google/redbull-kernel" groups="device,bramble,redfin" clone-depth="1" remote="aosp" />
-  <project path="device/google/redbull-sepolicy" name="device/google/redbull-sepolicy" groups="device,redbull" remote="aosp" />
-  <project path="device/google/redfin" name="device/google/redfin" groups="device,redfin" remote="aosp" />
-  <project path="device/google/redfin-sepolicy" name="device/google/redfin-sepolicy" groups="device,redfin" remote="aosp" />
-  <project path="device/google/tangorpro" name="device/google/tangorpro" groups="device,tangorpro" remote="aosp" />
-  <project path="device/google/tangorpro-sepolicy" name="device/google/tangorpro-sepolicy" groups="device,tangorpro" remote="aosp" />
-  <project path="device/google/tangorpro-kernel" name="device/google/tangorpro-kernel" groups="device,tangorpro" clone-depth="1" remote="aosp" />
-  <project path="device/google/shusky" name="device/google/shusky" groups="device,ripcurrent" remote="aosp" />
-  <project path="device/google/shusky-kernel" name="device/google/shusky-kernel" groups="device,ripcurrent" clone-depth="1" remote="aosp" />
-  <project path="device/google/shusky-sepolicy" name="device/google/shusky-sepolicy" groups="device,ripcurrent" remote="aosp" />
-  <project path="device/google/sunfish" name="device/google/sunfish" groups="device,sunfish" remote="aosp" />
-  <project path="device/google/sunfish-kernel" name="device/google/sunfish-kernel" groups="device,sunfish" clone-depth="1" remote="aosp" />
-  <project path="device/google/sunfish-sepolicy" name="device/google/sunfish-sepolicy" groups="device,sunfish" remote="aosp" />
   <project path="device/google/cuttlefish" name="device/google/cuttlefish" groups="device,pdk" remote="aosp" />
   <project path="device/google/cuttlefish_prebuilts" name="device/google/cuttlefish_prebuilts" groups="device,pdk" clone-depth="1" remote="aosp" />
   <project path="device/google/cuttlefish_vmm" name="device/google/cuttlefish_vmm" groups="device,pdk" clone-depth="1" remote="aosp" />
-  <project path="device/google/trout" name="device/google/trout" groups="device,trout,gull,pdk" remote="aosp" />
   <project path="device/google/vrservices" name="device/google/vrservices" groups="pdk" remote="aosp" />
-  <project path="device/google/zuma" name="device/google/zuma" groups="device,ripcurrent" remote="aosp" />
-  <project path="device/google/zuma-sepolicy" name="device/google/zuma-sepolicy" groups="device,ripcurrent" remote="aosp" />
   <project path="device/google_car" name="device/google_car" groups="pdk" remote="aosp" />
-  <project path="device/linaro/dragonboard" name="device/linaro/dragonboard" groups="device,dragonboard,pdk" remote="aosp" />
-  <project path="device/linaro/dragonboard-kernel" name="device/linaro/dragonboard-kernel" groups="device,dragonboard,pdk" clone-depth="1" remote="aosp" />
-  <project path="device/linaro/hikey" name="device/linaro/hikey" groups="device,hikey,pdk" remote="aosp" />
-  <project path="device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" groups="device,hikey,pdk" clone-depth="1" remote="aosp" />
-  <project path="device/linaro/poplar" name="device/linaro/poplar" groups="device,poplar,pdk" remote="aosp" />
-  <project path="device/linaro/poplar-kernel" name="device/linaro/poplar-kernel" groups="device,poplar,pdk" clone-depth="1" remote="aosp" />
   <project path="device/sample" name="device/sample" groups="pdk" remote="aosp" />
   <project path="external/aac" name="platform/external/aac" groups="pdk" remote="aosp" />
   <project path="external/abseil-cpp" name="platform/external/abseil-cpp" groups="pdk" remote="aosp" />
@@ -168,7 +108,7 @@
   <project path="external/autotest" name="platform/external/autotest" groups="pdk-fs" remote="aosp" />
   <project path="external/android-nn-driver" name="platform/external/android-nn-driver" groups="pdk-lassen,pdk-gs-arm" remote="aosp" />
   <project path="external/armnn" name="platform/external/armnn" groups="pdk-lassen,pdk-gs-arm" remote="aosp" />
-  <project path="external/avb" name="platform/external/avb" groups="pdk" remote="aosp" />
+  <project path="external/avb" name="EunoiaOS/android_external_avb" groups="pdk" />
   <project path="external/bazelbuild-rules_android" name="platform/external/bazelbuild-rules_android" groups="pdk" remote="aosp" />
   <project path="external/bazelbuild-rules_cc" name="platform/external/bazelbuild-rules_cc" groups="pdk" remote="aosp" />
   <project path="external/bazelbuild-rules_java" name="platform/external/bazelbuild-rules_java" groups="pdk" remote="aosp" />
@@ -206,7 +146,7 @@
   <project path="external/cpu_features" name="platform/external/cpu_features" groups="pdk" remote="aosp" />
   <project path="external/cpuinfo" name="platform/external/cpuinfo" groups="pdk" remote="aosp" />
   <project path="external/crcalc" name="platform/external/crcalc" groups="pdk" remote="aosp" />
-  <project path="external/cronet" name="platform/external/cronet" groups="pdk" remote="aosp" />
+  <project path="external/cronet" name="EunoiaOS/android_external_cronet" groups="pdk" remote="gitea" />
   <project path="external/crosvm" name="platform/external/crosvm" groups="pdk" remote="aosp" />
   <project path="external/curl" name="platform/external/curl" groups="pdk" remote="aosp" />
   <project path="external/dagger2" name="platform/external/dagger2" groups="pdk" remote="aosp" />
@@ -225,9 +165,9 @@
   <project path="external/double-conversion" name="platform/external/double-conversion" groups="pdk" remote="aosp" />
   <project path="external/downloader" name="platform/external/downloader" groups="pdk" remote="aosp" />
   <project path="external/drm_hwcomposer" name="platform/external/drm_hwcomposer" groups="drm_hwcomposer,pdk-fs" remote="aosp" />
-  <project path="external/dtc" name="platform/external/dtc" groups="pdk" remote="aosp" />
+  <project path="external/dtc" name="EunoiaOS/android_external_dtc" groups="pdk" />
   <project path="external/dynamic_depth" name="platform/external/dynamic_depth" groups="pdk" remote="aosp" />
-  <project path="external/e2fsprogs" name="platform/external/e2fsprogs" groups="pdk" remote="aosp" />
+  <project path="external/e2fsprogs" name="EunoiaOS/android_external_e2fsprogs" groups="pdk" />
   <project path="external/easymock" name="platform/external/easymock" groups="pdk" remote="aosp" />
   <project path="external/eigen" name="platform/external/eigen" groups="pdk" remote="aosp" />
   <project path="external/elfutils" name="platform/external/elfutils" groups="pdk" remote="aosp" />
@@ -285,7 +225,7 @@
   <project path="external/google-smali" name="platform/external/google-smali" groups="pdk" remote="aosp" />
   <project path="external/google-styleguide" name="platform/external/google-styleguide" groups="pdk" remote="aosp" />
   <project path="external/googletest" name="platform/external/googletest" groups="pdk" remote="aosp" />
-  <project path="external/gptfdisk" name="platform/external/gptfdisk" groups="pdk" remote="aosp" />
+  <project path="external/gptfdisk" name="EunoiaOS/android_external_gptfdisk" groups="pdk" />
   <project path="external/grpc-grpc" name="platform/external/grpc-grpc" groups="pdk,tradefed" remote="aosp" />
   <project path="external/grpc-grpc-java" name="platform/external/grpc-grpc-java" groups="pdk,tradefed" remote="aosp" />
   <project path="external/gson" name="platform/external/gson" groups="pdk,tradefed" remote="aosp" />
@@ -351,7 +291,7 @@
   <project path="external/libchrome-gestures" name="platform/external/libchrome-gestures" groups="pdk" remote="aosp" />
   <project path="external/libconfig" name="platform/external/libconfig" groups="pdk" remote="aosp" />
   <project path="external/libcups" name="platform/external/libcups" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="external/libcxx" name="platform/external/libcxx" groups="pdk" remote="aosp" />
+  <project path="external/libcxx" name="EunoiaOS/android_external_libcxx" groups="pdk" />
   <project path="external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" remote="aosp" />
   <project path="external/libdivsufsort" name="platform/external/libdivsufsort" groups="pdk" remote="aosp" />
   <project path="external/libdrm" name="platform/external/libdrm" groups="pdk" remote="aosp" />
@@ -374,7 +314,7 @@
   <project path="external/libmpeg2" name="platform/external/libmpeg2" groups="pdk" remote="aosp" />
   <project path="external/libnetfilter_conntrack" name="platform/external/libnetfilter_conntrack" groups="pdk" remote="aosp" />
   <project path="external/libnfnetlink" name="platform/external/libnfnetlink" groups="pdk" remote="aosp" />
-  <project path="external/libnl" name="platform/external/libnl" groups="pdk" remote="aosp" />
+  <project path="external/libnl" name="EunoiaOS/android_external_libnl" groups="pdk" />
   <project path="external/libogg" name="platform/external/libogg" groups="pdk" remote="aosp" />
   <project path="external/libopus" name="platform/external/libopus" groups="pdk" remote="aosp" />
   <project path="external/libpalmrejection" name="platform/external/libpalmrejection" groups="pdk" remote="aosp" />
@@ -390,7 +330,7 @@
   <project path="external/liburing" name="platform/external/liburing" groups="pdk" remote="aosp" />
   <project path="external/libusb" name="platform/external/libusb" groups="pdk" remote="aosp" />
   <project path="external/libutf" name="platform/external/libutf" groups="pdk" remote="aosp" />
-  <project path="external/libvpx" name="platform/external/libvpx" groups="pdk" remote="aosp" />
+  <project path="external/libvpx" name="EunoiaOS/android_external_libvpx" groups="pdk" />
   <project path="external/libwebm" name="platform/external/libwebm" groups="pdk" remote="aosp" />
   <project path="external/libwebsockets" name="platform/external/libwebsockets" groups="pdk" remote="aosp" />
   <project path="external/libxaac" name="platform/external/libxaac" groups="pdk" remote="aosp" />
@@ -413,7 +353,7 @@
   <project path="external/mime-support" name="platform/external/mime-support" groups="pdk" remote="aosp" />
   <project path="external/minigbm" name="platform/external/minigbm" groups="pdk" remote="aosp" />
   <project path="external/minijail" name="platform/external/minijail" groups="pdk" remote="aosp" />
-  <project path="external/mksh" name="platform/external/mksh" groups="pdk" remote="aosp" />
+  <project path="external/mksh" name="EunoiaOS/android_external_mksh" groups="pdk" />
   <project path="external/python/mobly" name="platform/external/python/mobly" groups="pdk" remote="aosp" />
   <project path="external/private-join-and-compute" name="platform/external/private-join-and-compute" groups="pdk" remote="aosp" />
   <project path="external/mobile-data-download" name="platform/external/mobile-data-download" groups="pdk" remote="aosp" />
@@ -867,7 +807,7 @@
   <project path="external/seccomp-tests" name="platform/external/seccomp-tests" groups="pdk" remote="aosp" />
   <project path="external/selinux" name="platform/external/selinux" groups="pdk" remote="aosp" />
   <project path="external/setfilters" name="platform/external/setfilters" groups="pdk" remote="aosp" />
-  <project path="external/setupcompat" name="platform/external/setupcompat" groups="pdk,sysui-studio" remote="aosp" />
+  <project path="external/setupcompat" name="EunoiaOS/android_external_setupcompat" groups="pdk,sysui-studio" />
   <project path="external/setupdesign" name="platform/external/setupdesign" groups="pdk,sysui-studio" remote="aosp" />
   <project path="external/sfntly" name="platform/external/sfntly" groups="pdk,qcom_msm8x26" remote="aosp" />
   <project path="external/sg3_utils" name="platform/external/sg3_utils" groups="pdk" remote="aosp" />
@@ -901,7 +841,7 @@
   <project path="external/tink" name="platform/external/tink" groups="pdk" remote="aosp" />
   <project path="external/tinyalsa" name="platform/external/tinyalsa" groups="pdk" remote="aosp" />
   <project path="external/tinyalsa_new" name="platform/external/tinyalsa_new" groups="pdk" remote="aosp" />
-  <project path="external/tinycompress" name="platform/external/tinycompress" groups="pdk" remote="aosp" />
+  <project path="external/tinycompress" name="EunoiaOS/android_external_tinycompress" groups="pdk" />
   <project path="external/tinyxml2" name="platform/external/tinyxml2" groups="pdk" remote="aosp" />
   <project path="external/toolchain-utils" name="platform/external/toolchain-utils" remote="aosp" />
   <project path="external/toybox" name="platform/external/toybox" groups="pdk" remote="aosp" />
@@ -924,9 +864,9 @@
   <project path="external/walt" name="platform/external/walt" groups="pdk" remote="aosp" />
   <project path="external/wayland" name="platform/external/wayland" groups="pdk" remote="aosp" />
   <project path="external/wayland-protocols" name="platform/external/wayland-protocols" groups="pdk" remote="aosp" />
-  <project path="external/webp" name="platform/external/webp" groups="pdk,qcom_msm8x26" remote="aosp" />
+  <project path="external/webp" name="EunoiaOS/android_external_webp" groups="pdk,qcom_msm8x26" />
   <project path="external/webrtc" name="platform/external/webrtc" groups="pdk" remote="aosp" />
-  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" groups="pdk" remote="aosp" />
+  <project path="external/wpa_supplicant_8" name="EunoiaOS/android_external_wpa_supplicant_8" groups="pdk" />
   <project path="external/wmediumd" name="platform/external/wmediumd" groups="pdk" remote="aosp" />
   <project path="external/wuffs-mirror-release-c" name="platform/external/wuffs-mirror-release-c" groups="pdk,qcom_msm8x26" remote="aosp" />
   <project path="external/wycheproof" name="platform/external/wycheproof" groups="pdk" remote="aosp" />
@@ -937,11 +877,11 @@
   <project path="external/yapf" name="platform/external/yapf" groups="vts,projectarch,pdk" remote="aosp" />
   <project path="external/zlib" name="platform/external/zlib" groups="pdk" remote="aosp" />
   <project path="external/zopfli" name="platform/external/zopfli" groups="pdk" remote="aosp" />
-  <project path="external/zstd" name="platform/external/zstd" groups="pdk" remote="aosp" />
+  <project path="external/zstd" name="EunoiaOS/android_external_zstd" groups="pdk" />
   <project path="external/zucchini" name="platform/external/zucchini" groups="pdk" remote="aosp" />
   <project path="external/zxing" name="platform/external/zxing" groups="pdk" remote="aosp" />
-  <project path="frameworks/av" name="platform/frameworks/av" groups="pdk" remote="aosp" />
-  <project path="frameworks/base" name="platform/frameworks/base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
+  <project path="frameworks/av" name="EunoiaOS/android_frameworks_av" groups="pdk" />
+  <project path="frameworks/base" name="EunoiaOS/android_frameworks_base" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
   <project path="frameworks/compile/libbcc" name="platform/frameworks/compile/libbcc" groups="pdk" remote="aosp" />
   <project path="frameworks/compile/mclinker" name="platform/frameworks/compile/mclinker" groups="pdk" remote="aosp" />
   <project path="frameworks/compile/slang" name="platform/frameworks/compile/slang" groups="pdk" remote="aosp" />
@@ -949,20 +889,20 @@
   <project path="frameworks/hardware/interfaces" name="platform/frameworks/hardware/interfaces" groups="pdk,sysui-studio" remote="aosp" />
   <project path="frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/libs/binary_translation" name="platform/frameworks/libs/binary_translation" groups="pdk" remote="aosp" />
-  <project path="frameworks/libs/systemui" name="platform/frameworks/libs/systemui" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
+  <project path="frameworks/libs/systemui" name="EunoiaOS/android_frameworks_libs_systemui" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
   <project path="frameworks/libs/modules-utils" name="platform/frameworks/libs/modules-utils" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
   <project path="frameworks/libs/native_bridge_support" name="platform/frameworks/libs/native_bridge_support" groups="pdk" remote="aosp" />
   <project path="frameworks/libs/service_entitlement" name="platform/frameworks/libs/service_entitlement" groups="pdk" remote="aosp" />
   <project path="frameworks/libs/gsma_services" name="platform/frameworks/libs/gsma_services" groups="pdk" remote="aosp" />
   <project path="frameworks/minikin" name="platform/frameworks/minikin" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/multidex" name="platform/frameworks/multidex" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="frameworks/native" name="platform/frameworks/native" groups="pdk" remote="aosp" />
+  <project path="frameworks/native" name="EunoiaOS/android_frameworks_native" groups="pdk" />
   <project path="frameworks/opt/bitmap" name="platform/frameworks/opt/bitmap" groups="pdk-fs" remote="aosp" />
-  <project path="frameworks/opt/calendar" name="platform/frameworks/opt/calendar" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="frameworks/opt/calendar" name="EunoiaOS/android_frameworks_opt_calendar" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/opt/car/services" name="platform/frameworks/opt/car/services" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/opt/car/setupwizard" name="platform/frameworks/opt/car/setupwizard" groups="pdk" remote="aosp" />
   <project path="frameworks/opt/chips" name="platform/frameworks/opt/chips" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="frameworks/opt/colorpicker" name="platform/frameworks/opt/colorpicker" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="frameworks/opt/colorpicker" name="EunoiaOS/android_frameworks_opt_colorpicker" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/opt/localepicker" name="platform/frameworks/opt/localepicker" remote="aosp" />
   <project path="frameworks/opt/net/ethernet" name="platform/frameworks/opt/net/ethernet" groups="pdk-fs" remote="aosp" />
   <project path="frameworks/opt/net/ims" name="platform/frameworks/opt/net/ims" groups="frameworks_ims,pdk-cw-fs,pdk-fs" remote="aosp" />
@@ -970,23 +910,23 @@
   <project path="frameworks/opt/net/wifi" name="platform/frameworks/opt/net/wifi" groups="pdk,sysui-studio" remote="aosp" />
   <project path="frameworks/opt/photoviewer" name="platform/frameworks/opt/photoviewer" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/opt/setupwizard" name="platform/frameworks/opt/setupwizard" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="frameworks/opt/telephony" name="platform/frameworks/opt/telephony" groups="pdk" remote="aosp" />
-  <project path="frameworks/opt/timezonepicker" name="platform/frameworks/opt/timezonepicker" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="frameworks/opt/telephony" name="EunoiaOS/android_frameworks_opt_telephony" groups="pdk" />
+  <project path="frameworks/opt/timezonepicker" name="EunoiaOS/android_frameworks_opt_timezonepicker" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/opt/tv/tvsystem" name="platform/frameworks/opt/tv/tvsystem" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/opt/vcard" name="platform/frameworks/opt/vcard" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="frameworks/proto_logging" name="platform/frameworks/proto_logging" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
   <project path="frameworks/rs" name="platform/frameworks/rs" groups="pdk" remote="aosp" />
   <project path="frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="hardware/broadcom/libbt" name="platform/hardware/broadcom/libbt" groups="pdk" remote="aosp" />
+  <project path="hardware/broadcom/libbt" name="EunoiaOS/android_hardware_broadcom_libbt" groups="pdk" />
   <project path="hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="pdk,broadcom_wlan" remote="aosp" />
   <project path="hardware/google/aemu" name="platform/hardware/google/aemu" groups="pdk" remote="aosp" />
   <project path="hardware/google/apf" name="platform/hardware/google/apf" groups="pdk" remote="aosp" />
   <project path="hardware/google/av" name="platform/hardware/google/av" groups="pdk" remote="aosp" />
   <project path="hardware/google/camera" name="platform/hardware/google/camera" groups="pdk" remote="aosp" />
   <project path="hardware/google/easel" name="platform/hardware/google/easel" groups="pdk,easel" remote="aosp" />
-  <project path="hardware/google/gchips" name="platform/hardware/google/gchips" groups="pdk-lassen,pdk-gs-arm" remote="aosp" />
+  <project path="hardware/google/gchips" name="EunoiaOS/android_hardware_google_gchips" groups="pdk-lassen,pdk-gs-arm" />
   <project path="hardware/google/gfxstream" name="platform/hardware/google/gfxstream" groups="pdk" remote="aosp" />
-  <project path="hardware/google/graphics/common" name="platform/hardware/google/graphics/common" groups="pdk-lassen,pdk-gs-arm" remote="aosp" />
+  <project path="hardware/google/graphics/common" name="EunoiaOS/android_hardware_google_graphics_common" groups="pdk-lassen,pdk-gs-arm" />
   <project path="hardware/google/graphics/gs101" name="platform/hardware/google/graphics/gs101" groups="pdk-lassen,pdk-gs-arm" remote="aosp" />
   <project path="hardware/google/graphics/gs201" name="platform/hardware/google/graphics/gs201" groups="cloudripper" remote="aosp" />
   <project path="hardware/google/graphics/zuma" name="platform/hardware/google/graphics/zuma" groups="ripcurrent" remote="aosp" />
@@ -997,33 +937,29 @@
   <project path="hardware/interfaces" name="platform/hardware/interfaces" groups="pdk,sysui-studio" remote="aosp" />
   <project path="hardware/invensense" name="platform/hardware/invensense" groups="invensense,pdk" remote="aosp" />
   <project path="hardware/knowles/athletico/sound_trigger_hal" name="platform/hardware/knowles/athletico/sound_trigger_hal" groups="coral,generic_fs" remote="aosp" />
-  <project path="hardware/libhardware" name="platform/hardware/libhardware" groups="pdk" remote="aosp" />
+  <project path="hardware/libhardware" name="EunoiaOS/android_hardware_libhardware" groups="pdk" />
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" groups="pdk" remote="aosp" />
   <project path="hardware/nxp/keymint" name="platform/hardware/nxp/keymint" groups="pdk" remote="aosp" />
   <project path="hardware/nxp/nfc" name="platform/hardware/nxp/nfc" groups="pdk" remote="aosp" />
   <project path="hardware/nxp/uwb" name="platform/hardware/nxp/uwb" groups="pdk" remote="aosp" />
   <project path="hardware/nxp/secure_element" name="platform/hardware/nxp/secure_element" groups="pdk" remote="aosp" />
   <project path="hardware/nxp/weaver" name="platform/hardware/nxp/weaver" groups="pdk" remote="aosp" />
-  <project path="hardware/qcom/audio" name="platform/hardware/qcom/audio" groups="qcom,qcom_audio,pdk-qcom" remote="aosp" />
+  <project path="hardware/qcom/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,qcom_audio,pdk-qcom" />
   <project path="hardware/qcom/bootctrl" name="platform/hardware/qcom/bootctrl" groups="pdk-qcom" remote="aosp" />
   <project path="hardware/qcom/bt" name="platform/hardware/qcom/bt" groups="qcom,pdk-qcom" remote="aosp" />
-  <project path="hardware/qcom/camera" name="platform/hardware/qcom/camera" groups="qcom_camera,pdk-qcom" remote="aosp" />
-  <project path="hardware/qcom/data/ipacfg-mgr" name="platform/hardware/qcom/data/ipacfg-mgr" groups="qcom,pdk-qcom" remote="aosp" />
-  <project path="hardware/qcom/display" name="platform/hardware/qcom/display" groups="pdk-qcom,qcom,qcom_display" remote="aosp" />
-  <project path="hardware/qcom/gps" name="platform/hardware/qcom/gps" groups="qcom,qcom_gps,pdk-qcom" remote="aosp" />
+  <project path="hardware/qcom/camera" name="EunoiaOS/android_hardware_qcom_camera" groups="qcom_camera,pdk-qcom" />
+  <project path="hardware/qcom/data/ipacfg-mgr" name="EunoiaOS/android_hardware_qcom_data_ipacfg-mgr" groups="qcom,pdk-qcom" />
+  <project path="hardware/qcom/display" name="EunoiaOS/android_hardware_qcom_display" groups="pdk-qcom,qcom,qcom_display" />
+  <project path="hardware/qcom/gps" name="EunoiaOS/android_hardware_qcom_gps" groups="qcom,qcom_gps,pdk-qcom" />
   <project path="hardware/qcom/keymaster" name="platform/hardware/qcom/keymaster" groups="qcom,qcom_keymaster,pdk-qcom" remote="aosp" />
-  <project path="hardware/qcom/media" name="platform/hardware/qcom/media" groups="qcom,pdk-qcom" remote="aosp" />
+  <project path="hardware/qcom/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,pdk-qcom" />
   <project path="hardware/qcom/power" name="platform/hardware/qcom/power" groups="qcom,pdk-qcom" remote="aosp" />
-  <project path="hardware/qcom/sm7150/gps" name="platform/hardware/qcom/sm7150/gps" groups="qcom_sm7150" remote="aosp">
-    <linkfile dest="hardware/qcom/sm7150/Android.mk" src="os_pickup.mk" />
-    <linkfile dest="hardware/qcom/sm7150/Android.bp" src="os_pickup.bp" />
-  </project>
-  <project path="hardware/qcom/sm7250/display" name="platform/hardware/qcom/sm7250/display" groups="qcom_sm7250" remote="aosp" />
-  <project path="hardware/qcom/sm7250/gps" name="platform/hardware/qcom/sm7250/gps" groups="qcom_sm7250" remote="aosp">
+  <project path="hardware/qcom/sm7250/display" name="EunoiaOS/android_hardware_qcom_sm7250_display" groups="qcom_sm7250" />
+  <project path="hardware/qcom/sm7250/gps" name="EunoiaOS/android_hardware_qcom_sm7250_gps" groups="qcom_sm7250">
     <linkfile dest="hardware/qcom/sm7250/Android.mk" src="os_pickup.mk" />
     <linkfile dest="hardware/qcom/sm7250/Android.bp" src="os_pickup.bp" />
   </project>
-  <project path="hardware/qcom/sm7250/media" name="platform/hardware/qcom/sm7250/media" groups="qcom_sm7250" remote="aosp" />
+  <project path="hardware/qcom/sm7250/media" name="EunoiaOS/android_hardware_qcom_sm7250_media" groups="qcom_sm7250" />
   <project path="hardware/qcom/sm8150/data/ipacfg-mgr" name="platform/hardware/qcom/sm8150/data/ipacfg-mgr" groups="qcom_sm8150" remote="aosp">
     <linkfile dest="hardware/qcom/sm8150/Android.mk" src="os_pickup.mk" />
     <linkfile dest="hardware/qcom/sm8150/Android.bp" src="os_pickup.bp" />
@@ -1037,15 +973,15 @@
     <linkfile dest="hardware/qcom/sm8150p/Android.mk" src="os_pickup.mk" />
     <linkfile dest="hardware/qcom/sm8150p/Android.bp" src="os_pickup.bp" />
   </project>
-  <project path="hardware/qcom/wlan" name="platform/hardware/qcom/wlan" groups="qcom_wlan,pdk-qcom" remote="aosp" />
-  <project path="hardware/ril" name="platform/hardware/ril" groups="pdk" remote="aosp" />
+  <project path="hardware/qcom/wlan" name="EunoiaOS/android_hardware_qcom_wlan" groups="qcom_wlan,pdk-qcom" />
+  <project path="hardware/ril" name="EunoiaOS/android_hardware_ril" groups="pdk" />
   <project path="hardware/st/nfc" name="platform/hardware/st/nfc" groups="pdk" remote="aosp" />
   <project path="hardware/st/secure_element" name="platform/hardware/st/secure_element" groups="pdk" remote="aosp" />
   <project path="hardware/st/secure_element2" name="platform/hardware/st/secure_element2" groups="pdk" remote="aosp" />
   <project path="hardware/samsung/nfc" name="platform/hardware/samsung/nfc" groups="pdk" remote="aosp" />
   <project path="hardware/synaptics/wlan" name="platform/hardware/synaptics/wlan" groups="pdk" remote="aosp" />
   <project path="hardware/ti/am57x" name="platform/hardware/ti/am57x" groups="pdk" remote="aosp" />
-  <project path="kernel/configs" name="kernel/configs" groups="vts,pdk" remote="aosp" />
+  <project path="kernel/configs" name="EunoiaOS/android_kernel_configs" groups="vts,pdk" />
   <project path="kernel/prebuilts/4.19/arm64" name="kernel/prebuilts/4.19/arm64" groups="pdk" clone-depth="1" remote="aosp" />
   <project path="kernel/prebuilts/5.4/arm64" name="kernel/prebuilts/5.4/arm64" groups="pdk" clone-depth="1" remote="aosp" />
   <project path="kernel/prebuilts/5.4/x86_64" name="kernel/prebuilts/5.4/x86-64" groups="pdk" clone-depth="1" remote="aosp" />
@@ -1075,7 +1011,7 @@
   <project path="packages/apps/BasicSmsReceiver" name="platform/packages/apps/BasicSmsReceiver" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/apps/Browser2" name="platform/packages/apps/Browser2" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/Calendar" name="platform/packages/apps/Calendar" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Camera2" name="platform/packages/apps/Camera2" groups="pdk-fs" remote="aosp" />
+  <project path="packages/apps/Camera2" name="EunoiaOS/android_packages_apps_Camera2" groups="pdk-fs" />
   <project path="packages/apps/Car/SystemUI" name="platform/packages/apps/Car/SystemUI" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/Car/Cluster" name="platform/packages/apps/Car/Cluster" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/Car/DebuggingRestrictionController" name="platform/packages/apps/Car/DebuggingRestrictionController" groups="pdk-fs" remote="aosp" />
@@ -1095,27 +1031,27 @@
   <project path="packages/apps/Car/systemlibs" name="platform/packages/apps/Car/systemlibs" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/Car/SystemUpdater" name="platform/packages/apps/Car/SystemUpdater" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/CarrierConfig" name="platform/packages/apps/CarrierConfig" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/apps/CellBroadcastReceiver" name="platform/packages/apps/CellBroadcastReceiver" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/apps/CellBroadcastReceiver" name="EunoiaOS/android_packages_apps_CellBroadcastReceiver" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/apps/CertInstaller" name="platform/packages/apps/CertInstaller" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/apps/Contacts" name="platform/packages/apps/Contacts" groups="pdk-fs" remote="aosp" />
+  <project path="packages/apps/Contacts" name="EunoiaOS/android_packages_apps_Contacts" groups="pdk-fs" />
   <project path="packages/apps/DeskClock" name="platform/packages/apps/DeskClock" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/DevCamera" name="platform/packages/apps/DevCamera" groups="pdk" remote="aosp" />
-  <project path="packages/apps/Dialer" name="platform/packages/apps/Dialer" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/DocumentsUI" name="platform/packages/apps/DocumentsUI" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/apps/EmergencyInfo" name="platform/packages/apps/EmergencyInfo" groups="pdk-fs" remote="aosp" />
+  <project path="packages/apps/Dialer" name="EunoiaOS/android_packages_apps_Dialer" groups="pdk-fs" />
+  <project path="packages/apps/DocumentsUI" name="EunoiaOS/android_packages_apps_DocumentsUI" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/apps/EmergencyInfo" name="EunoiaOS/android_packages_apps_EmergencyInfo" groups="pdk-fs" />
+  <project path="packages/apps/EunoiaHome" name="EunoiaOS/android_packages_apps_EunoiaHome" groups="pdk-fs,sysui-studio" />
   <project path="packages/apps/Gallery" name="platform/packages/apps/Gallery" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/Gallery2" name="platform/packages/apps/Gallery2" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/HTMLViewer" name="platform/packages/apps/HTMLViewer" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/ImsServiceEntitlement" name="platform/packages/apps/ImsServiceEntitlement" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/KeyChain" name="platform/packages/apps/KeyChain" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Launcher3" name="platform/packages/apps/Launcher3" groups="pdk-fs,sysui-studio" remote="aosp" />
   <project path="packages/apps/LegacyCamera" name="platform/packages/apps/LegacyCamera" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/ManagedProvisioning" name="platform/packages/apps/ManagedProvisioning" groups="pdk-fs" remote="aosp" />
   <project path="external/android_onboarding" name="platform/external/android_onboarding" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Messaging" name="platform/packages/apps/Messaging" groups="pdk-fs" remote="aosp" />
+  <project path="packages/apps/Messaging" name="EunoiaOS/android_packages_apps_Messaging" groups="pdk-fs" />
   <project path="packages/apps/Music" name="platform/packages/apps/Music" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/MusicFX" name="platform/packages/apps/MusicFX" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="apps_nfc,pdk-fs" remote="aosp" />
+  <project path="packages/apps/Nfc" name="EunoiaOS/android_packages_apps_Nfc" groups="apps_nfc,pdk-fs" />
   <project path="packages/apps/OnDeviceAppPrediction" name="platform/packages/apps/OnDeviceAppPrediction" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/PhoneCommon" name="platform/packages/apps/PhoneCommon" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/apps/Protips" name="platform/packages/apps/Protips" groups="pdk-fs" remote="aosp" />
@@ -1125,15 +1061,14 @@
   <project path="packages/apps/SafetyRegulatoryInfo" name="platform/packages/apps/SafetyRegulatoryInfo" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/SampleLocationAttribution" name="platform/packages/apps/SampleLocationAttribution" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/SecureElement" name="platform/packages/apps/SecureElement" groups="apps_se,pdk-fs" remote="aosp" />
-  <project path="packages/apps/Settings" name="platform/packages/apps/Settings" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/SettingsIntelligence" name="platform/packages/apps/SettingsIntelligence" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/SpareParts" name="platform/packages/apps/SpareParts" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Stk" name="platform/packages/apps/Stk" groups="apps_stk,pdk-fs" remote="aosp" />
+  <project path="packages/apps/Settings" name="EunoiaOS/android_packages_apps_Settings" groups="pdk-fs" />
+  <project path="packages/apps/SettingsIntelligence" name="EunoiaOS/android_packages_apps_SettingsIntelligence" groups="pdk-fs" />
+  <project path="packages/apps/Stk" name="EunoiaOS/android_packages_apps_Stk" groups="apps_stk,pdk-fs" />
   <project path="packages/apps/StorageManager" name="platform/packages/apps/StorageManager" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/SystemUIGo" name="platform/packages/apps/SystemUIGo" groups="pdk-fs" remote="aosp" />
-  <project path="packages/apps/Tag" name="platform/packages/apps/Tag" groups="pdk-fs" remote="aosp" />
+  <project path="packages/apps/Tag" name="EunoiaOS/android_packages_apps_Tag" groups="pdk-fs" />
   <project path="packages/apps/Test/connectivity" name="platform/packages/apps/Test/connectivity" groups="pdk" remote="aosp" />
-  <project path="packages/apps/ThemePicker" name="platform/packages/apps/ThemePicker" groups="pdk-fs,sysui-studio" remote="aosp" />
+  <project path="packages/apps/ThemePicker" name="EunoiaOS/android_packages_apps_ThemePicker" groups="pdk-fs,sysui-studio" />
   <project path="packages/apps/Traceur" name="platform/packages/apps/Traceur" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/TvSettings" name="platform/packages/apps/TvSettings" groups="pdk-fs" remote="aosp" />
   <project path="packages/apps/TvFeedbackConsent" name="platform/packages/apps/TvFeedbackConsent" groups="pdk-fs" remote="aosp" />
@@ -1141,18 +1076,18 @@
   <project path="packages/apps/TV" name="platform/packages/apps/TV" groups="pdk" remote="aosp" />
   <project path="packages/apps/UniversalMediaPlayer" name="platform/packages/apps/UniversalMediaPlayer" remote="aosp" />
   <project path="packages/apps/WallpaperPicker2" name="platform/packages/apps/WallpaperPicker2" groups="pdk-fs,sysui-studio" remote="aosp" />
-  <project path="packages/inputmethods/LatinIME" name="platform/packages/inputmethods/LatinIME" groups="pdk-fs" remote="aosp" />
+  <project path="packages/inputmethods/LatinIME" name="EunoiaOS/android_packages_inputmethods_LatinIME" groups="pdk-fs" />
   <project path="packages/inputmethods/LeanbackIME" name="platform/packages/inputmethods/LeanbackIME" groups="pdk-fs" remote="aosp" />
-  <project path="packages/modules/adb" name="platform/packages/modules/adb" groups="pdk" remote="aosp" />
+  <project path="packages/modules/adb" name="EunoiaOS/android_packages_modules_adb" groups="pdk" />
   <project path="packages/modules/AdServices" name="platform/packages/modules/AdServices" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
   <project path="packages/modules/AppSearch" name="platform/packages/modules/AppSearch" groups="pdk" remote="aosp" />
   <project path="packages/modules/ArtPrebuilt" name="platform/packages/modules/ArtPrebuilt" groups="pdk" clone-depth="1" remote="aosp" />
-  <project path="packages/modules/Bluetooth" name="platform/packages/modules/Bluetooth" groups="pdk" remote="aosp" />
+  <project path="packages/modules/Bluetooth" name="EunoiaOS/android_packages_modules_Bluetooth" groups="pdk" />
   <project path="packages/modules/CaptivePortalLogin" name="platform/packages/modules/CaptivePortalLogin" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/CellBroadcastService" name="platform/packages/modules/CellBroadcastService" groups="pdk" remote="aosp" />
-  <project path="packages/modules/common" name="platform/packages/modules/common" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/modules/common" name="EunoiaOS/android_packages_modules_common" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/modules/ConfigInfrastructure" name="platform/packages/modules/ConfigInfrastructure" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/modules/Connectivity" name="platform/packages/modules/Connectivity" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/modules/Connectivity" name="EunoiaOS/android_packages_modules_Connectivity" groups="pdk-cw-fs,pdk-fs" remote="gitea" />
   <project path="packages/modules/CrashRecovery" name="platform/packages/modules/CrashRecovery" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/Cronet" name="platform/packages/modules/Cronet" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/DeviceLock" name="platform/packages/modules/DeviceLock" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
@@ -1170,7 +1105,7 @@
   <project path="packages/modules/NetworkStack" name="platform/packages/modules/NetworkStack" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/NeuralNetworks" name="platform/packages/modules/NeuralNetworks" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/OnDevicePersonalization" name="platform/packages/modules/OnDevicePersonalization" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/modules/Permission" name="platform/packages/modules/Permission" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/modules/Permission" name="EunoiaOS/android_packages_modules_Permission" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/modules/RemoteKeyProvisioning" name="platform/packages/modules/RemoteKeyProvisioning" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/RuntimeI18n" name="platform/packages/modules/RuntimeI18n" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/Scheduling" name="platform/packages/modules/Scheduling" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
@@ -1184,14 +1119,14 @@
   <project path="packages/modules/UprobeStats" name="platform/packages/modules/UprobeStats" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/modules/Virtualization" name="platform/packages/modules/Virtualization" groups="pdk" remote="aosp" />
   <project path="packages/modules/vndk" name="platform/packages/modules/vndk" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/modules/Wifi" name="platform/packages/modules/Wifi" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
+  <project path="packages/modules/Wifi" name="EunoiaOS/android_packages_modules_Wifi" groups="pdk-cw-fs,pdk-fs,sysui-studio" />
   <project path="packages/providers/BlockedNumberProvider" name="platform/packages/providers/BlockedNumberProvider" groups="pdk-fs" remote="aosp" />
   <project path="packages/providers/BookmarkProvider" name="platform/packages/providers/BookmarkProvider" groups="pdk-fs" remote="aosp" />
   <project path="packages/providers/CalendarProvider" name="platform/packages/providers/CalendarProvider" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/providers/CallLogProvider" name="platform/packages/providers/CallLogProvider" groups="pdk-fs" remote="aosp" />
   <project path="packages/providers/ContactsProvider" name="platform/packages/providers/ContactsProvider" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/providers/DownloadProvider" name="platform/packages/providers/DownloadProvider" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/providers/MediaProvider" name="platform/packages/providers/MediaProvider" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/providers/DownloadProvider" name="EunoiaOS/android_packages_providers_DownloadProvider" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/providers/MediaProvider" name="EunoiaOS/android_packages_providers_MediaProvider" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/providers/PartnerBookmarksProvider" name="platform/packages/providers/PartnerBookmarksProvider" groups="pdk-fs" remote="aosp" />
   <project path="packages/providers/TelephonyProvider" name="platform/packages/providers/TelephonyProvider" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/providers/TvProvider" name="platform/packages/providers/TvProvider" groups="pdk-fs" remote="aosp" />
@@ -1203,10 +1138,10 @@
   <project path="packages/services/Car" name="platform/packages/services/Car" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/services/DeviceAsWebcam" name="platform/packages/services/DeviceAsWebcam" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="packages/services/Iwlan" name="platform/packages/services/Iwlan" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/services/Mms" name="platform/packages/services/Mms" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/services/Mms" name="EunoiaOS/android_packages_services_Mms" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/services/Mtp" name="platform/packages/services/Mtp" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/services/Telecomm" name="platform/packages/services/Telecomm" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
-  <project path="packages/services/Telephony" name="platform/packages/services/Telephony" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
+  <project path="packages/services/Telecomm" name="EunoiaOS/android_packages_services_Telecomm" groups="pdk-cw-fs,pdk-fs" />
+  <project path="packages/services/Telephony" name="EunoiaOS/android_packages_services_Telephony" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/wallpapers/ImageWallpaper" name="platform/packages/wallpapers/ImageWallpaper" groups="pdk-fs" remote="aosp" />
   <project path="packages/wallpapers/LivePicker" name="platform/packages/wallpapers/LivePicker" groups="pdk-fs" remote="aosp" />
   <project path="pdk" name="platform/pdk" groups="pdk" remote="aosp" />
@@ -1280,61 +1215,61 @@
   <project path="sdk" name="platform/sdk" groups="pdk-cw-fs,pdk-fs" remote="aosp" />
   <project path="system/apex" name="platform/system/apex" groups="pdk" remote="aosp" />
   <project path="system/authgraph" name="platform/system/authgraph" groups="pdk" remote="aosp" />
-  <project path="system/bpf" name="platform/system/bpf" groups="pdk" remote="aosp" />
+  <project path="system/bpf" name="EunoiaOS/android_system_bpf" groups="pdk" />
   <project path="system/bpfprogs" name="platform/system/bpfprogs" groups="pdk" remote="aosp" />
   <project path="system/ca-certificates" name="platform/system/ca-certificates" groups="pdk" remote="aosp" />
   <project path="system/chre" name="platform/system/chre" groups="pdk" remote="aosp" />
   <project path="system/connectivity/wificond" name="platform/system/connectivity/wificond" groups="pdk" remote="aosp" />
-  <project path="system/core" name="platform/system/core" groups="pdk" remote="aosp" />
+  <project path="system/core" name="EunoiaOS/android_system_core" groups="pdk" remote="gitea" />
   <project path="system/dmesgd" name="platform/system/dmesgd" groups="pdk" remote="aosp" />
-  <project path="system/extras" name="platform/system/extras" groups="pdk" remote="aosp" />
+  <project path="system/extras" name="EunoiaOS/android_system_extras" groups="pdk" />
   <project path="system/gatekeeper" name="platform/system/gatekeeper" groups="pdk" remote="aosp" />
   <project path="system/gsid" name="platform/system/gsid" groups="pdk" remote="aosp" />
   <project path="system/hardware/interfaces" name="platform/system/hardware/interfaces" groups="pdk,sysui-studio" remote="aosp" />
   <project path="system/hwservicemanager" name="platform/system/hwservicemanager" groups="pdk" remote="aosp" />
   <project path="system/incremental_delivery" name="platform/system/incremental_delivery" groups="pdk" remote="aosp" />
   <project path="system/iorap" name="platform/system/iorap" groups="pdk" remote="aosp" />
-  <project path="system/keymaster" name="platform/system/keymaster" groups="pdk" remote="aosp" />
+  <project path="system/keymaster" name="EunoiaOS/android_system_keymaster" groups="pdk" />
   <project path="system/keymint" name="platform/system/keymint" groups="pdk" remote="aosp" />
   <project path="system/libartpalette" name="platform/system/libartpalette" groups="pdk" remote="aosp" />
   <project path="system/libbase" name="platform/system/libbase" groups="pdk" remote="aosp" />
   <project path="system/libcppbor" name="platform/system/libcppbor" groups="pdk" remote="aosp" />
   <project path="system/libfmq" name="platform/system/libfmq" groups="pdk" remote="aosp" />
-  <project path="system/libhidl" name="platform/system/libhidl" groups="pdk,sysui-studio" remote="aosp" />
+  <project path="system/libhidl" name="EunoiaOS/android_system_libhidl" groups="pdk,sysui-studio" />
   <project path="system/libhwbinder" name="platform/system/libhwbinder" groups="pdk" remote="aosp" />
   <project path="system/libprocinfo" name="platform/system/libprocinfo" groups="pdk" remote="aosp" />
   <project path="system/librustutils" name="platform/system/librustutils" groups="pdk" remote="aosp" />
   <project path="system/libsysprop" name="platform/system/libsysprop" groups="pdk" remote="aosp" />
   <project path="system/libufdt" name="platform/system/libufdt" groups="pdk" remote="aosp" />
   <project path="system/libvintf" name="platform/system/libvintf" groups="pdk" remote="aosp" />
-  <project path="system/libziparchive" name="platform/system/libziparchive" groups="pdk" remote="aosp" />
+  <project path="system/libziparchive" name="EunoiaOS/android_system_libziparchive" groups="pdk" />
   <project path="system/linkerconfig" name="platform/system/linkerconfig" groups="pdk" remote="aosp" />
-  <project path="system/logging" name="platform/system/logging" groups="pdk" remote="aosp" />
-  <project path="system/media" name="platform/system/media" groups="pdk" remote="aosp" />
+  <project path="system/logging" name="EunoiaOS/android_system_logging" groups="pdk" />
+  <project path="system/media" name="EunoiaOS/android_system_media" groups="pdk" />
   <project path="system/memory/libion" name="platform/system/memory/libion" groups="pdk" remote="aosp" />
   <project path="system/memory/libdmabufheap" name="platform/system/memory/libdmabufheap" groups="pdk" remote="aosp" />
   <project path="system/memory/libmeminfo" name="platform/system/memory/libmeminfo" groups="pdk" remote="aosp" />
   <project path="system/memory/libmemtrack" name="platform/system/memory/libmemtrack" groups="pdk" remote="aosp" />
   <project path="system/memory/libmemunreachable" name="platform/system/memory/libmemunreachable" groups="pdk" remote="aosp" />
   <project path="system/memory/lmkd" name="platform/system/memory/lmkd" groups="pdk" remote="aosp" />
-  <project path="system/netd" name="platform/system/netd" groups="pdk" remote="aosp" />
+  <project path="system/netd" name="EunoiaOS/android_system_netd" groups="pdk" />
   <project path="system/nfc" name="platform/system/nfc" groups="pdk" remote="aosp" />
   <project path="system/nvram" name="platform/system/nvram" groups="pdk" remote="aosp" />
   <project path="system/secretkeeper" name="platform/system/secretkeeper" groups="pdk" remote="aosp" />
-  <project path="system/security" name="platform/system/security" groups="pdk" remote="aosp" />
-  <project path="system/sepolicy" name="platform/system/sepolicy" groups="pdk" remote="aosp" />
+  <project path="system/security" name="EunoiaOS/android_system_security" groups="pdk" />
+  <project path="system/sepolicy" name="EunoiaOS/android_system_sepolicy" groups="pdk" />
   <project path="system/server_configurable_flags" name="platform/system/server_configurable_flags" groups="pdk" remote="aosp" />
   <project path="system/teeui" name="platform/system/teeui" groups="pdk" remote="aosp" />
   <project path="system/testing/gtest_extras" name="platform/system/testing/gtest_extras" groups="pdk" remote="aosp" />
   <project path="system/timezone" name="platform/system/timezone" groups="pdk" remote="aosp" />
   <project path="system/tools/aidl" name="platform/system/tools/aidl" groups="pdk" remote="aosp" />
   <project path="system/tools/hidl" name="platform/system/tools/hidl" groups="pdk" remote="aosp" />
-  <project path="system/tools/mkbootimg" name="platform/system/tools/mkbootimg" groups="pdk" remote="aosp" />
+  <project path="system/tools/mkbootimg" name="EunoiaOS/android_system_tools_mkbootimg" groups="pdk" />
   <project path="system/tools/sysprop" name="platform/system/tools/sysprop" groups="pdk" remote="aosp" />
   <project path="system/tools/xsdc" name="platform/system/tools/xsdc" groups="pdk" remote="aosp" />
   <project path="system/unwinding" name="platform/system/unwinding" groups="pdk" remote="aosp" />
-  <project path="system/update_engine" name="platform/system/update_engine" groups="pdk" remote="aosp" />
-  <project path="system/vold" name="platform/system/vold" groups="pdk" remote="aosp" />
+  <project path="system/update_engine" name="EunoiaOS/android_system_update_engine" groups="pdk" />
+  <project path="system/vold" name="EunoiaOS/android_system_vold" groups="pdk" />
   <project path="test/dittosuite" name="platform/test/dittosuite" groups="pdk" remote="aosp" />
   <project path="test/framework" name="platform/test/framework" groups="vts,projectarch,pdk" remote="aosp" />
   <project path="test/robolectric-extensions" name="platform/test/robolectric-extensions" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="aosp" />
