@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- EunoiaOS additions -->
+  <project path="manifest" name="EunoiaOS/android_menifest" />
+  <project path="device/eunoia/sepolicy" name="EunoiaOS/android_device_eunoia_sepolicy" />
+  <project path="external/bash" name="EunoiaOS/android_external_bash" />
+  <project path="external/exfatprogs" name="EunoiaOS/android_external_exfatprogs" />
+  <project path="external/htop" name="EunoiaOS/android_external_htop" />
+  <project path="external/libncurses" name="EunoiaOS/android_external_libncurses" />
+  <project path="external/nano" name="EunoiaOS/android_external_nano" />
+  <project path="external/ntfs-3g" name="EunoiaOS/android_external_ntfs-3g" />
+  <project path="external/openssh" name="EunoiaOS/android_external_openssh" groups="pdk" />
+  <project path="external/rsync" name="EunoiaOS/android_external_rsync" />
+  <project path="external/unrar" name="EunoiaOS/android_external_unrar" />
+  <project path="external/vim" name="EunoiaOS/android_external_vim" />
+  <project path="hardware/eunoia/compat" name="EunoiaOS/android_hardware_eunoia_compat" />
+  <project path="hardware/eunoia/interfaces" name="EunoiaOS/android_hardware_eunoia_interfaces" />
+  <project path="hardware/eunoia/livedisplay" name="EunoiaOS/android_hardware_eunoia_livedisplay" />
+  <project path="eunoia-sdk" name="EunoiaOS/android_eunoia-sdk" />
+  <project path="packages/apps/EunoiaParts" name="EunoiaOS/android_packages_apps_EunoiaParts" />
+  <project path="packages/apps/Updater" name="EunoiaOS/android_packages_apps_Updater" />
+  <project path="packages/overlays/Eunoia" name="EunoiaOS/android_packages_overlays_Eunoia" />
+  <project path="packages/resources/devicesettings" name="EunoiaOS/android_packages_resources_devicesettings" />
+  <project path="prebuilts/extract-tools" name="EunoiaOS/android_prebuilts_extract-tools" clone-depth="1" />
+  <project path="tools/extract-utils" name="EunoiaOS/android_tools_extract-utils" />
+  <project path="vendor/eunoia" name="EunoiaOS/android_vendor_eunoia" />
+  <project path="vendor/eunoia-ui" name="EunoiaOS/android_vendor_eunoia-ui" />
+
+  <!-- Legacy AOSP additions -->
+  <project path="external/tinyxml" name="EunoiaOS/android_external_tinyxml" groups="pdk" />
+
+  <!-- Inline kernel build -->
+  <project path="prebuilts/kernel-build-tools" name="kernel/prebuilts/build-tools" clone-depth="1" remote="aosp" revision="refs/tags/android-14.0.0_r0.76" />
+  <project path="prebuilts/tools-eunoia" name="EunoiaOS/android_prebuilts_tools-eunoia" clone-depth="1" />
+
+  <!-- CodeLinaro additions -->
+  <project path="device/qcom/sepolicy" name="EunoiaOS/android_device_qcom_sepolicy" groups="qcom,qssi" />
+  <project path="device/qcom/sepolicy-legacy-um" name="EunoiaOS/android_device_qcom_sepolicy" groups="qcom,sdm660" revision="eunoia-1.0-legacy-um" />
+  <project path="device/qcom/sepolicy_vndr/legacy-um" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,lahaina" revision="eunoia-1.0-legacy-um" />
+  <project path="device/qcom/sepolicy_vndr/sm6225-ad" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,divar-vendor" revision="eunoia-1.0-caf-sm6225-ad" />
+  <project path="external/ant-wireless/ant_client" name="EunoiaOS/android_external_ant-wireless_ant_client" groups="qcom" />
+  <project path="external/ant-wireless/ant_native" name="EunoiaOS/android_external_ant-wireless_ant_native" groups="qcom" />
+  <project path="external/ant-wireless/ant_service" name="EunoiaOS/android_external_ant-wireless_ant_service" groups="qcom" />
+  <project path="external/ant-wireless/hidl" name="EunoiaOS/android_external_ant-wireless_hidl" groups="qcom,qssi" />
+  <project path="external/json-c" name="EunoiaOS/android_external_json-c" groups="qcom,qssi" />
+  <project path="hardware/qcom-caf/bootctrl" name="EunoiaOS/android_hardware_qcom_bootctrl" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf" />
+  <project path="hardware/qcom-caf/bt" name="EunoiaOS/android_hardware_qcom_bt" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf" />
+  <project path="hardware/qcom-caf/common" name="EunoiaOS/android_hardware_qcom-caf_common" groups="qcom" >
+    <!-- add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- add guards for CAF repositories -->
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <!--
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8953/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8998/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm660/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm845/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8450/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8550/Android.mk" />
+    -->
+  </project>
+  <!--
+  <project path="hardware/qcom-caf/msm8953/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,msm8953" revision="eunoia-1.0-caf-msm8953" />
+  <project path="hardware/qcom-caf/msm8953/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-msm8953" />
+  <project path="hardware/qcom-caf/msm8953/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,msm8953" revision="eunoia-1.0-caf-msm8953" />
+  <project path="hardware/qcom-caf/msm8996/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8996" />
+  <project path="hardware/qcom-caf/msm8996/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8996" />
+  <project path="hardware/qcom-caf/msm8996/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8996" />
+  <project path="hardware/qcom-caf/msm8998/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8998" />
+  <project path="hardware/qcom-caf/msm8998/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8998" />
+  <project path="hardware/qcom-caf/msm8998/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,legacy-qcom" revision="eunoia-1.0-caf-msm8998" />
+  <project path="hardware/qcom-caf/sdm660/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,sdm660" revision="eunoia-1.0-caf-sdm660" />
+  <project path="hardware/qcom-caf/sdm660/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sdm660" />
+  <project path="hardware/qcom-caf/sdm660/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,sdm660" revision="eunoia-1.0-caf-sdm660" />
+  <project path="hardware/qcom-caf/sdm845/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,sdm845" revision="eunoia-1.0-caf-sdm845" />
+  <project path="hardware/qcom-caf/sdm845/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sdm845" />
+  <project path="hardware/qcom-caf/sdm845/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,sdm845" revision="eunoia-1.0-caf-sdm845" />
+  <project path="hardware/qcom-caf/sm8150/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,msmnile" revision="eunoia-1.0-caf-sm8150" />
+  <project path="hardware/qcom-caf/sm8150/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sm8150" />
+  <project path="hardware/qcom-caf/sm8150/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,msmnile" revision="eunoia-1.0-caf-sm8150" />
+  <project path="hardware/qcom-caf/sm8250/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,kona" revision="eunoia-1.0-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8250/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,kona" revision="eunoia-1.0-caf-sm8250" />
+  <project path="hardware/qcom-caf/sm8350/audio" name="EunoiaOS/android_hardware_qcom_audio" groups="qcom,lahaina" revision="eunoia-1.0-caf-sm8350" />
+  <project path="hardware/qcom-caf/sm8350/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sm8350" />
+  <project path="hardware/qcom-caf/sm8350/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,lahaina" revision="eunoia-1.0-caf-sm8350" />
+  <project path="hardware/qcom-caf/sm8450/audio/agm" name="EunoiaOS/android_vendor_qcom_opensource_agm" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8450/audio/pal" name="EunoiaOS/android_vendor_qcom_opensource_arpal-lx" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8450/audio/primary-hal" name="EunoiaOS/android_hardware_qcom_audio-ar" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8450/data-ipa-cfg-mgr" name="EunoiaOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8450/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8450/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="hardware/qcom-caf/sm8550/audio/agm" name="EunoiaOS/android_vendor_qcom_opensource_agm" groups="qcom,kailua-audio" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/audio/pal" name="EunoiaOS/android_vendor_qcom_opensource_arpal-lx" groups="qcom,kailua-audio" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/audio/primary-hal" name="EunoiaOS/android_hardware_qcom_audio-ar" groups="qcom,kailua-audio" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/data-ipa-cfg-mgr" name="EunoiaOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/dataipa" name="EunoiaOS/android_vendor_qcom_opensource_dataipa" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/display" name="EunoiaOS/android_hardware_qcom_display" groups="qcom" revision="eunoia-1.0-caf-sm8550" />
+  <project path="hardware/qcom-caf/sm8550/media" name="EunoiaOS/android_hardware_qcom_media" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf-sm8550" />
+  -->
+  <project path="hardware/qcom-caf/thermal" name="EunoiaOS/android_hardware_qcom_thermal" groups="qcom,kailua-vendor" />
+  <project path="hardware/qcom-caf/vr" name="EunoiaOS/android_hardware_qcom_vr" groups="qcom,legacy-qcom" />
+  <project path="hardware/qcom-caf/wlan" name="EunoiaOS/android_hardware_qcom_wlan" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf" />
+  <project path="vendor/codeaurora/telephony" name="EunoiaOS/android_vendor_codeaurora_telephony" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/audio-hal/st-hal" name="EunoiaOS/android_vendor_qcom_opensource_audio-hal_st-hal" groups="qcom,lahaina" />
+  <project path="vendor/qcom/opensource/audio-hal/st-hal-ar" name="EunoiaOS/android_vendor_qcom_opensource_audio-hal_st-hal-ar" groups="qcom,kailua-audio" />
+  <project path="vendor/qcom/opensource/commonsys-intf/display" name="EunoiaOS/android_vendor_qcom_opensource_display-commonsys-intf" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/commonsys/display" name="EunoiaOS/android_vendor_qcom_opensource_display-commonsys" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/commonsys/fm" name="EunoiaOS/android_vendor_qcom_opensource_fm-commonsys" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/commonsys/wfd" name="EunoiaOS/android_vendor_qcom_opensource_wfd-commonsys" groups="qcom,kailua-video" />
+  <project path="vendor/qcom/opensource/core-utils-sys" name="EunoiaOS/android_vendor_qcom_opensource_core-utils-sys" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/core-utils-vendor" name="EunoiaOS/android_vendor_qcom_opensource_core-utils-vendor" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um" name="EunoiaOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" groups="qcom,lahaina" revision="eunoia-1.0-legacy-um" />
+  <project path="vendor/qcom/opensource/dataservices" name="EunoiaOS/android_vendor_qcom_opensource_dataservices" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/display" name="EunoiaOS/android_vendor_qcom_opensource_display" groups="qcom" />
+  <project path="vendor/qcom/opensource/healthd-ext" name="EunoiaOS/android_vendor_qcom_opensource_healthd-ext" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/interfaces" name="EunoiaOS/android_vendor_qcom_opensource_interfaces" groups="qcom,qssi" />
+  <project path="vendor/qcom/opensource/libfmjni" name="EunoiaOS/android_vendor_qcom_opensource_libfmjni" groups="qcom" />
+  <project path="vendor/qcom/opensource/power" name="EunoiaOS/android_vendor_qcom_opensource_power" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/thermal-engine" name="EunoiaOS/android_vendor_qcom_opensource_thermal-engine" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/usb" name="EunoiaOS/android_vendor_qcom_opensource_usb" groups="qcom,kailua-vendor" />
+  <project path="vendor/qcom/opensource/vibrator" name="EunoiaOS/android_vendor_qcom_opensource_vibrator" groups="qcom,kailua-vendor" />
+</manifest>
