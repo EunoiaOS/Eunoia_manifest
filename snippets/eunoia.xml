@@ -50,6 +50,8 @@
   <project path="device/qcom/sepolicy-legacy-um" name="EunoiaOS/android_device_qcom_sepolicy" groups="qcom,sdm660" revision="eunoia-1.0-legacy-um" />
   <project path="device/qcom/sepolicy_vndr/legacy-um" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,lahaina" revision="eunoia-1.0-legacy-um" />
   <project path="device/qcom/sepolicy_vndr/sm6225-ad" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,divar-vendor" revision="eunoia-1.0-caf-sm6225-ad" />
+  <project path="device/qcom/sepolicy_vndr/sm8450" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,waipio-vendor" revision="eunoia-1.0-caf-sm8450" />
+  <project path="device/qcom/sepolicy_vndr/sm8550" name="EunoiaOS/android_device_qcom_sepolicy_vndr" groups="qcom,kailua-vendor" revision="eunoia-1.0-caf-sm8550" />
   <project path="external/ant-wireless/ant_client" name="EunoiaOS/android_external_ant-wireless_ant_client" groups="qcom" />
   <project path="external/ant-wireless/ant_native" name="EunoiaOS/android_external_ant-wireless_ant_native" groups="qcom" />
   <project path="external/ant-wireless/ant_service" name="EunoiaOS/android_external_ant-wireless_ant_service" groups="qcom" />
