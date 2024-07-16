@@ -1326,4 +1326,7 @@
 
   <!-- Eunoia Packages -->
   <include name="snippets/eunoia.xml" />
+
+  <!-- Lineage Packages -->
+  <include name="snippets/lineage.xml" />
 </manifest>
