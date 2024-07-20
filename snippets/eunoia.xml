@@ -4,7 +4,6 @@
   <project path="manifest" name="EunoiaOS/android_menifest" />
   <project path="device/eunoia/sepolicy" name="EunoiaOS/android_device_eunoia_sepolicy" />
   <project path="external/bash" name="EunoiaOS/android_external_bash" />
-  <project path="external/exfatprogs" name="EunoiaOS/android_external_exfatprogs" />
   <project path="external/htop" name="EunoiaOS/android_external_htop" />
   <project path="external/libncurses" name="EunoiaOS/android_external_libncurses" />
   <project path="external/nano" name="EunoiaOS/android_external_nano" />
